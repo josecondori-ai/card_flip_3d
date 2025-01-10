@@ -1,0 +1,70 @@
+/* Estilo general del cuerpo de la página */
+body {
+    display: flex; /* Centra el contenedor horizontalmente */
+    justify-content: center; /* Centra el contenedor verticalmente */
+    align-items: center; /* Alinea el contenedor en el centro de la pantalla */
+    height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+    margin: 0; /* Elimina el margen por defecto */
+    font-family: Arial, sans-serif; /* Fuente básica */
+    background: linear-gradient(135deg, #1e1e1e, #121212); /* Fondo con degradado */
+    color: white;
+    overflow: hidden; /* Evita que aparezcan barras de desplazamiento */
+}
+
+/* Contenedor que agrupa las tarjetas */
+.escena {
+    display: flex; /* Disposición horizontal de las tarjetas */
+    justify-content: space-around; /* Espaciado uniforme entre tarjetas */
+    gap: 20px; /* Espaciado adicional entre tarjetas */
+    width: 90%; /* Ocupa el 90% del ancho de la pantalla */
+    max-width: 1200px; /* Limita el ancho máximo del contenedor */
+    perspective: 1000px; /* Perspectiva para el efecto 3D */
+}
+
+/* Estilo de las tarjetas */
+.card {
+    position: relative; /* Permite posicionar las caras de la tarjeta de forma absoluta */
+    width: 240px;
+    height: 320px;
+    cursor: pointer; /* Cambia el cursor a mano cuando se pasa el mouse por encima */
+    transform-style: preserve-3d; /* Habilita el efecto 3D */
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Animación suave */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra alrededor de la tarjeta */
+}
+
+/* Efecto de volteo de la tarjeta al pasar el mouse */
+.card:hover {
+    transform: rotateY(180deg); /* Rota la tarjeta 180 grados en el eje Y */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8); /* Sombra más intensa al pasar el mouse */
+}
+
+/* Estilo común para ambas caras de la tarjeta */
+.face_card {
+    position: absolute; /* Se posicionan una encima de la otra */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px; /* Bordes redondeados para ambas caras */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde */
+    backface-visibility: hidden; /* Oculta la cara trasera cuando no está visible */
+    transition: 0.8s; /* Animación suave para el brillo */
+}
+
+/* Imágenes dentro de las tarjetas */
+.face_card img {
+    width: 100%; /* Asegura que la imagen ocupe el 100% del ancho de la tarjeta */
+    height: 100%; /* Asegura que la imagen ocupe el 100% de la altura de la tarjeta */
+    object-fit: cover; /* Ajusta la imagen manteniendo su proporción */
+}
+
+/* Cara trasera de la tarjeta, inicialmente no visible */
+.face_card_back {
+    transform: rotateY(180deg); /* La cara trasera comienza volteada 180 grados */
+}
+
+/* Efecto de brillo al pasar el mouse por la tarjeta */
+.card:hover .face_card_front {
+    filter: brightness(1.2); /* Aumenta el brillo de la cara frontal */
+}
